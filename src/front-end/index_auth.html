@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% if not request.user.is_authenticated %}
+    {% block all %}
+        {% block head %}
+            <head>
+                <meta http-equiv="refresh" content="3; URL=../accounts/login" />
+            </head>
+        {% endblock %}
+        {% block content %}
+            <h1>You aren't signed in! Redirecting...</h1>
+        {% endblock %}
+    {% endblock %}
+
+{% else %}
+
+    <head>
+        <meta http-equiv="refresh" content="1; URL=../dash/" />
+    </head>
+
+    <h1>Loading..</h1>
+  
+{% endif %} 

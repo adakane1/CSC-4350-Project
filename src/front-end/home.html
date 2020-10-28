@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block wfpage %}
+    <html data-wf-page="5f921300fda10ab33040d68d" data-wf-site="5f8b4b25f245d42df31cf09d">
+{% endblock %}
+
+{% block bodyName %}
+  <body>
+{% endblock %}
+
+{% block content %}
+<style>
+    .w-button {
+        padding: 27px 20px 30px 20px;
+        border-radius: 12px;
+    }
+    #login {
+      background-color: transparent;
+      color: #5892d6;
+    }
+</style>
+<div class="section">
+    <h1 class="heading-3">Let Mushu be your guide</h1>
+    <div class="div-block-4"><a href="signup" class="button w-button">Sign Up</a></div>
+    <div class="div-block-4"><a id="login" href="../accounts/login/" class="button w-button">Log In</a></div>
+  </div>
+{% endblock %}

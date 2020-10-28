@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block wfpage %}
+  <html data-wf-page="5f8e623f7cdaba74364c3c49" data-wf-site="5f8b4b25f245d42df31cf09d">
+{% endblock %}
+
+{% block bodyName %}
+  <body class="body-2">
+{% endblock %}
+
+{% block content %}
+<div class="div-block-2">
+  <h1 class="heading-2">Create a new account</h1>
+  <div class="w-form">
+    <form method="POST" id="email-form" name="email-form" data-name="Email Form">{% csrf_token %}<label for="name">First Name</label><input type="text" class="inputs w-input" autofocus="true" maxlength="256" name="name" data-name="Name" placeholder="Enter your first name" id="name" required=""><label for="name-2">Last Name</label><input type="text" class="inputs w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="Enter your last name" id="name-2" required=""><label for="Username">Username</label><input type="text" class="inputs w-input" maxlength="256" name="Username" data-name="Username" placeholder="Enter desired username e.g. JohnDoe22" id="Username" required=""><label for="email">Email Address</label><input type="email" class="inputs w-input" maxlength="256" name="email" data-name="Email" placeholder="e.g. johndoe@mail.com" id="email"><label for="Pass">Password (8-12 characters)</label><input type="password" class="inputs w-input" maxlength="256" name="Pass" data-name="Pass" placeholder="Create a password" id="Pass" required=""><label for="Pass-Confirm">Confirm Password</label><input type="password" class="inputs w-input" maxlength="256" name="Pass-Confirm" data-name="Pass Confirm" placeholder="Confirm password chosen" id="Pass-Confirm" required=""><input type="submit" value="Submit" data-wait="Please wait..." class="submit-button w-button"></form>
+    <div class="w-form-done">
+      <div>Thank you! Your submission has been received!</div>
+    </div>
+    <div class="w-form-fail">
+      <div>Oops! Something went wrong while submitting the form.</div>
+    </div>
+  </div>
+</div>
+{% endblock %}
