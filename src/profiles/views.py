@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
 from .forms import ProfileUpdateForm
-
 from .models import Profile
 
 from django.contrib.auth.models import User
@@ -58,4 +57,5 @@ def user_detail_view(request, *args, **kwargs):
     context = {
         'object' : obj
     }
+    print(obj.age)
     return render(request, "profiles/detail.html", {})

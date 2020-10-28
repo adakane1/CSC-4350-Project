@@ -16,6 +16,6 @@ def relativeDate(numDays):
 # Create your models here.
 class ExerciseGoal(models.Model):
     parentUser = models.OneToOneField(User, on_delete=models.CASCADE, default=None)
-    description = models.TextField()
+    goal = models.TextField()
     createdDate = models.DateTimeField(default=relativeDate(0), editable=False)
     # deadline = models.DateTimeField(default=relativeDate(1), blank=False)

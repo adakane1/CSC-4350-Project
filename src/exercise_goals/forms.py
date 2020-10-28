@@ -6,5 +6,9 @@ class ExerciseGoalForm(forms.ModelForm):
     class Meta:
         model = ExerciseGoal
         fields = [
-            
+            'goal',
+            'createdDate'
         ]
+        labels = {
+            
+        }
