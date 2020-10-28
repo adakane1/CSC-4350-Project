@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block index %}
+  {% block wfpage %}
+  <html data-wf-page="5f8b4b25f245d465921cf09e" data-wf-site="5f8b4b25f245d42df31cf09d">
+  {% endblock %}
+
+    {% block bodyName %}
+    <body class="body">
+    {% endblock %}
+
+    {% block content %}
+    <div class="div-block"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782w7-feb0742c-27fd-4b66-a03f-865b51b71a7f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4Mnc3LWZlYjA3NDJjLTI3ZmQtNGI2Ni1hMDNmLTg2NWI1MWI3MWE3Zi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.sm7vQ9A2y8z8EmoKICfhKJ0IRO4oPdI0D0RYCfDLaCQ" loading="lazy" alt="" class="image-5"></div>
+      <a href="../dash/">
+        <div class="logo">
+          <div class="columns-2 w-row">
+            <div class="column-3 w-col w-col-3"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782vb-5ce74b17-7612-444d-8c55-1217bd03a7af.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MnZiLTVjZTc0YjE3LTc2MTItNDQ0ZC04YzU1LTEyMTdiZDAzYTdhZi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.yJOfocWkVPu0OhqJKncO13VTKPjToO-xkY7o6S2G9lg" loading="lazy" width="223" alt="" class="image-3"></div>
+            <div class="column-4 w-col w-col-9"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782v1-5b420685-6879-4152-a517-6f1ab22fd22e.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MnYxLTViNDIwNjg1LTY4NzktNDE1Mi1hNTE3LTZmMWFiMjJmZDIyZS5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.OQd_nlv8BBy8FqkVszQPDij5AinKlFBJDObEGngY2rw" loading="lazy" width="150" alt="" class="image-4"></div>
+          </div>
+        </div>
+      </a>
+      <div class="navbar">
+        <ul role="list" class="list-2 w-list-unstyled">
+          <li class="nav"><a href="../profile/">Profile</a></li>
+          <li class="nav">Challenges</li>
+          <li class="nav">Chat</li>
+          <li class="nav">FAQ</li>
+          <li class="nav">Settings</li>
+          <li class="nav"><a href="../accounts/logout/">Log Out</a></li>
+        </ul>
+        <div class="user">
+          <div class="w-row">
+            <div class="w-col w-col-3"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de7834s-6515bd40-8b2c-4dc6-a843-5ac1a95a8b55.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MzRzLTY1MTViZDQwLThiMmMtNGRjNi1hODQzLTVhYzFhOTVhOGI1NS5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.t3nAJ1KQSPY1h0Q5KgikcHKTihrtKu-OuBFtMmSS0nA" loading="lazy" width="164" alt="" class="image-9"></div>
+            <div class="column-5 w-col w-col-9">
+              <p class="paragraph">{{ user.profile.firstName }} {{ user.profile.lastName }}</p>
+              <p class="paragraph-2">@{{ user.username }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="logo logochange">
+        <div class="columns-3 w-row">
+          <div class="w-col w-col-6"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782vb-5ce74b17-7612-444d-8c55-1217bd03a7af.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MnZiLTVjZTc0YjE3LTc2MTItNDQ0ZC04YzU1LTEyMTdiZDAzYTdhZi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.yJOfocWkVPu0OhqJKncO13VTKPjToO-xkY7o6S2G9lg" loading="lazy" width="87" alt="" class="image-8"></div>
+          <div class="w-col w-col-6"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782v1-5b420685-6879-4152-a517-6f1ab22fd22e.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MnYxLTViNDIwNjg1LTY4NzktNDE1Mi1hNTE3LTZmMWFiMjJmZDIyZS5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.OQd_nlv8BBy8FqkVszQPDij5AinKlFBJDObEGngY2rw" loading="lazy" width="183" alt="" class="image-7"></div>
+        </div>
+      </div>
+      
+      <div class="w-layout-grid grid">
+        {% block mainContent %}
+        <div id="w-node-05b6cacc241a-921cf09e" class="card"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782zi-6b9f477b-982c-4b43-8ca8-c0f48079a538.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MnppLTZiOWY0NzdiLTk4MmMtNGI0My04Y2E4LWMwZjQ4MDc5YTUzOC5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.XmbKUZUdv_XV2iJkhrOJ_V4M1-uKBkJ7ZVOpjQi9oGU" loading="lazy" alt="">
+          <div class="w-row">
+            <div class="w-col w-col-6 w-col-small-6 w-col-tiny-6">
+              <ul role="list" class="goallist">
+                <li class="goals">Enter goal here</li>
+                <li class="goals">Enter goal here</li>
+              </ul>
+            </div>
+            <div class="w-col w-col-6 w-col-small-6 w-col-tiny-6">
+              <ul role="list" class="goallist">
+                <li class="goals">Enter goal here</li>
+                <li class="goals">Enter goal here</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <a href="#">Add goal</a>
+          </div>
+        </div>
+        <div class="card"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782yo-20b21194-b73e-4016-96aa-c8e50b981ccb.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MnlvLTIwYjIxMTk0LWI3M2UtNDAxNi05NmFhLWM4ZTUwYjk4MWNjYi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.cLXvgMIxWfwdpTOPCwhIUNK-QVjG-wsUk8UsI4W5VnM" loading="lazy" alt="">
+          <div class="goalgroup w-row">
+            <div class="w-col w-col-6 w-col-small-6 w-col-tiny-6">
+              <ul role="list" class="goallist">
+                <li class="goals">Enter goal here</li>
+                <li class="goals">Enter goal here</li>
+              </ul>
+            </div>
+            <div class="w-col w-col-6 w-col-small-6 w-col-tiny-6">
+              <ul role="list" class="goallist">
+                <li class="goals">Enter goal here</li>
+                <li class="goals">Enter goal here</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782xt-3f3557da-bb13-4379-bf7c-9570613ba91b.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4Mnh0LTNmMzU1N2RhLWJiMTMtNDM3OS1iZjdjLTk1NzA2MTNiYTkxYi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DKGt9_S5lkveFcKVUSyR-_ScDj5GZ721UKZXz_2IJfw" loading="lazy" alt="">
+          <div class="w-row">
+            <div class="w-col w-col-6 w-col-small-6 w-col-tiny-6">
+              <ul role="list" class="goallist">
+                <li class="goals">Enter goal here</li>
+                <li class="goals">Enter goal here</li>
+              </ul>
+            </div>
+            <div class="w-col w-col-6 w-col-small-6 w-col-tiny-6">
+              <ul role="list" class="goallist">
+                <li class="goals">Enter goal here</li>
+                <li class="goals">Enter goal here</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de7d4re-c476256f-21df-4c38-9556-f78d4cadd85c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTdkNHJlLWM0NzYyNTZmLTIxZGYtNGMzOC05NTU2LWY3OGQ0Y2FkZDg1Yy5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.wJobA1dtMzArjvDfL608HR6LzK90rfm-MvLYpUPqNqI" loading="lazy" alt="">
+          <div class="w-row">
+            <div class="w-col w-col-6 w-col-small-6 w-col-tiny-6">
+              <ul role="list" class="goallist">
+                <li class="goals">Enter goal here</li>
+                <li class="goals">Enter goal here</li>
+              </ul>
+            </div>
+            <div class="w-col w-col-6 w-col-small-6 w-col-tiny-6">
+              <ul role="list" class="goallist">
+                <li class="goals">Enter goal here</li>
+                <li class="goals">Enter goal here</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      {% endblock %}
+      </div>
+    {% endblock %}
+  {% endblock %}
