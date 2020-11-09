@@ -10,7 +10,8 @@ def home_view(request, *args, **kwargs):
 
 @login_required
 def dash_view(request, *args, **kwargs):
-    print(request.user)
+    # print(request.user)
+
     return render(request, "index.html", {})
 
 # def signUp_view(request, *args, **kwargs):

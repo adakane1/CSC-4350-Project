@@ -39,10 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'profiles',
-    'exercise_goals',
-    'nutrition_goals',
-    'sleep_goals',
-    'appointments',
+    'goals',
 ]
 
 MIDDLEWARE = [
