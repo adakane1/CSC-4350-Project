@@ -59,3 +59,4 @@ def user_detail_view(request, *args, **kwargs):
     }
     print(obj.age)
     return render(request, "profiles/detail.html", {})
+
