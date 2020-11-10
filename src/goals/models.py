@@ -28,5 +28,5 @@ GOAL_TYPE = {
 class Goal(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     goal_type = models.IntegerField(choices=GOAL_TYPE, default=0)
-    date = models.DateTimeField(default=tomorrow, choices=DATES)
+    date = models.DateTimeField(default=tomorrow)
     description = models.TextField(blank=False, max_length=30)
