@@ -21,3 +21,22 @@ def goal_create_view(request):
     }
 
     return render(request, "goals/goal_create.html", context)
+
+def goal_detail_view(request):
+    print((Goal.objects.filter(user=request.user).values()))
+    singleGoal = []
+    context = {
+        "singleGoal": singleGoal
+    }
+    # context = (Goal.objects.filter(user=request.user).values())
+    for goal in Goal.objects.filter(user=request.user).values():
+        singleGoal.append(goal)
+
+    for i in singleGoal:
+        print("Goal:")
+        print(i)
+        print(type(i))
+        print()
+    return render(request, "goals/goal_detail.html", context)
+
+    

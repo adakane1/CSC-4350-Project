@@ -78,7 +78,7 @@ class Profile(models.Model):
     avg_sleep = models.IntegerField(default=8, blank=True)
     exercise_level = models.IntegerField(choices=EXERCISE_LEVEL_OPTIONS, default=2, blank=True)
 
-class UserGoal(models.Model):
+class Goal(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     goal_type = models.IntegerField(choices=GOAL_TYPE, default=0)
     date = models.DateTimeField(default=tomorrow, choices=DATES)
