@@ -26,12 +26,13 @@ def goal_detail_view(request):
     print((Goal.objects.filter(user=request.user).values()))
     singleGoal = []
     context = {
-        "singleGoal": singleGoal
+        "singleGoal": singleGoal,
+        "hasGoals": False
     }
     # context = (Goal.objects.filter(user=request.user).values())
     for goal in Goal.objects.filter(user=request.user).values():
         singleGoal.append(goal)
-
+        context["hasGoals"] = True
     for i in singleGoal:
         print("Goal:")
         print(i)
