@@ -9,7 +9,6 @@ class GoalUpdateForm(forms.ModelForm):
     class Meta:
         model = Goal
         fields = [
-            'user',
             'goal_type',
             'date',
             'description'
