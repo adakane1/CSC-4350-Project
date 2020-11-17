@@ -26,6 +26,7 @@ GOAL_TYPE = {
 
 # Create your models here.
 class Goal(models.Model):
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     goal_type = models.IntegerField(choices=GOAL_TYPE, default=0)
     date = models.DateTimeField(default=tomorrow)
