@@ -70,7 +70,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, default=None)
     firstName = models.CharField(max_length=30)
     lastName = models.CharField(max_length=30)
-    email = models.EmailField(max_length=254, blank=True, unique=True)
+    email = models.EmailField(max_length=254, blank=True)
 
     age = models.IntegerField(null=True, blank=True, default=18)
     height = models.IntegerField(choices=HEIGHT_OPTIONS, default=65, blank=True)
