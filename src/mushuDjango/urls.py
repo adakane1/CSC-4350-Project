@@ -29,8 +29,8 @@ urlpatterns = [
     path('signup/', signup, name='signup'),
     
     path('dash/', dash_view, name='dash'),
-    path('dash/profile/', user_detail_view),
-    path('dash/profilefill/', profile_fill_view, name="profilefill"),
+    # path('dash/profile/', user_detail_view),
+    path('dash/profile/', profile_fill_view, name="profilefill"),
     path('dash/new_goal/', goal_create_view, name="new_goal"),
-    path('dash/goal/', goal_detail_view, name="goal"), 
+    path('dash/goal/', goal_create_view, name="goal"), 
 ]
