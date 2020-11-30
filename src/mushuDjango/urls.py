@@ -32,5 +32,5 @@ urlpatterns = [
     # path('dash/profile/', user_detail_view),
     path('dash/profile/', profile_fill_view, name="profilefill"),
     path('dash/new_goal/', goal_create_view, name="new_goal"),
-    path('dash/goal/', goal_create_view, name="goal"), 
+    path('dash/goal/', goal_detail_view, name="goal"), 
 ]

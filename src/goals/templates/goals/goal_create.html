@@ -1,8 +1,28 @@
-<div class="div-block-2">
+{% extends 'index.html' %}
+
+{% block mainContent %}
+
+<style>
+  .thisForm {
+    width: 100%;
+    margin-left: 400px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+
+</style>
+<div class="thisForm">
     <h1 class="heading-2">What is your goal?</h1>
     <div class="w-form">
       <form method="POST"> {% csrf_token %}
           {{ form.as_p }}
           <input type="submit" value="Save" data-wait="Please wait..." class="submit-button w-button"></form>
     </div>
+    <a href="../goal" style="color: white;">
+      <div class="submit-button w-button" style="background-color: rgb(201, 72, 72); text-align: center;">
+        Cancel
+      </div>
+    </a>
   </div>
+
+{% endblock %}
