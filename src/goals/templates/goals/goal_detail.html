@@ -2909,7 +2909,7 @@ textarea.w-select {
             {% if hasGoals %}
                 {% for goal in singleGoal %}
                     {% if goal.goal_type == 0 %}
-                        <li class="goals">{{ goal.description }}<div class="deleteGoal"> <a href="#">x</a> </div></li>
+                        <li class="goals">{{ goal.description }}<div class="deleteGoal"> <a href="./delete/{{ goal.id }}">x</a> </div></li>
                         
                     {% endif %}
                 {% endfor %}
@@ -2932,7 +2932,7 @@ textarea.w-select {
             {% if hasGoals %}
                 {% for goal in singleGoal %}
                     {% if goal.goal_type == 1 %}
-                        <li class="goals">{{ goal.description }}<div class="deleteGoal"> x </div></li>
+                        <li class="goals">{{ goal.description }}<div class="deleteGoal"> <a href="./delete/{{ goal.id }}">x</a> </div></li>
                     {% endif %}
                 {% endfor %}
 
@@ -2954,7 +2954,7 @@ textarea.w-select {
             {% if hasGoals %}
                 {% for goal in singleGoal %}
                     {% if goal.goal_type == 2 %}
-                        <li class="goals">{{ goal.description }}<div class="deleteGoal"> x </div></li>
+                        <li class="goals">{{ goal.description }}<div class="deleteGoal"> <a href="./delete/{{ goal.id }}">x</a> </div></li>
                     {% endif %}
                 {% endfor %}
 
@@ -2976,7 +2976,7 @@ textarea.w-select {
             {% if hasGoals %}
                 {% for goal in singleGoal %}
                     {% if goal.goal_type == 3 %}
-                        <li class="goals">{{ goal.description }}<div class="deleteGoal"> x </div></li>
+                        <li class="goals">{{ goal.description }}<div class="deleteGoal"> <a href="./delete/{{ goal.id }}">x</a> </div></li>
                     {% endif %}
                 {% endfor %}
 

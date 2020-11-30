@@ -17,7 +17,11 @@ from django.contrib import admin
 from django.urls import path, include 
 from pages.views import dash_view, home_view 
 from profiles.views import signup, profile_fill_view, user_detail_view
-from goals.views import goal_create_view, goal_detail_view
+from goals.views import (
+    goal_create_view, 
+    goal_detail_view,
+    goal_delete_view
+    )
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -32,5 +36,7 @@ urlpatterns = [
     # path('dash/profile/', user_detail_view),
     path('dash/profile/', profile_fill_view, name="profilefill"),
     path('dash/new_goal/', goal_create_view, name="new_goal"),
-    path('dash/goal/', goal_detail_view, name="goal"), 
+    path('dash/goal/new_goal/', goal_create_view, name="new_goal"),
+    path('dash/goal/', goal_detail_view, name="goal"),
+    path('dash/goal/delete/<int:id>', goal_delete_view, name="delete") 
 ]

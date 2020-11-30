@@ -5,7 +5,7 @@ from .models import Goal
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required
@@ -42,4 +42,7 @@ def goal_detail_view(request):
         print()
     return render(request, "goals/goal_detail.html", context)
 
-    
+def goal_delete_view(request, id):
+    obj = get_object_or_404(Goal, id=id)
+    obj.delete()
+    return redirect('goal')
