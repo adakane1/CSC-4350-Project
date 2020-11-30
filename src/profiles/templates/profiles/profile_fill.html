@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'index.html' %}
 
 {% block wfpage %}
   <html data-wf-page="5f8e623f7cdaba74364c3c49" data-wf-site="5f8b4b25f245d42df31cf09d">
@@ -8,8 +8,14 @@
   <body class="body-2">
 {% endblock %}
 
-{% block content %}
-<div class="div-block-2">
+{% block mainContent %}
+<style>
+  #form {
+    width: 100%;
+    margin-left: 500px;
+  }
+</style>
+<div id="form">
   <h1 class="heading-2">Tell us more about you</h1>
   <div class="w-form">
     <form method="POST"> {% csrf_token %}
@@ -22,5 +28,10 @@
       <div>Oops! Something went wrong while submitting the form.</div>
     </div>
   </div>
+  <a href="../" style="color: white;">
+    <div class="submit-button w-button" style="background-color: rgb(201, 72, 72); text-align: center;">
+      Cancel
+    </div>
+  </a>
 </div>
 {% endblock %}
