@@ -31,3 +31,4 @@ class Goal(models.Model):
     goal_type = models.IntegerField(choices=GOAL_TYPE, default=0)
     date = models.DateTimeField(default=tomorrow)
     description = models.TextField(blank=False, max_length=30)
+    complete = models.BooleanField(default=False)

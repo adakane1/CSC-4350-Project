@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .forms import GoalUpdateForm
 from .models import Goal
+from profiles.models import Profile
 
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
@@ -44,5 +45,16 @@ def goal_detail_view(request):
 
 def goal_delete_view(request, id):
     obj = get_object_or_404(Goal, id=id)
-    obj.delete()
+    if request.user == obj.user:
+        print('confirming delete from right user...')
+        obj.delete()    
     return redirect('goal')
+
+def goal_complete_view(request, id):
+    obj = get_object_or_404(Goal, id=id)
+    if obj.complete:
+        obj.complete = False
+    else:
+        obj.complete = True
+    obj.save()
+    return redirect('dash')

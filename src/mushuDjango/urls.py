@@ -20,7 +20,8 @@ from profiles.views import signup, profile_fill_view, user_detail_view
 from goals.views import (
     goal_create_view, 
     goal_detail_view,
-    goal_delete_view
+    goal_delete_view,
+    goal_complete_view
     )
 
 from django.conf import settings
@@ -38,5 +39,6 @@ urlpatterns = [
     path('dash/new_goal/', goal_create_view, name="new_goal"),
     path('dash/goal/new_goal/', goal_create_view, name="new_goal"),
     path('dash/goal/', goal_detail_view, name="goal"),
-    path('dash/goal/delete/<int:id>', goal_delete_view, name="delete") 
+    path('dash/goal/delete/<int:id>', goal_delete_view, name="delete"),
+    path('dash/complete/<int:id>', goal_complete_view, name="complete")  
 ]

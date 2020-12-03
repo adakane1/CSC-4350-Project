@@ -10,6 +10,18 @@
     {% endblock %}
 
     {% block content %}
+
+    <style>
+      .completeGoal {
+        display: none;
+        z-index: 100; 
+      }
+      .goals:hover > .completeGoal{
+        display: inline;
+        margin-left: 15px;
+      }
+
+    </style>
     <div class="div-block"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782w7-feb0742c-27fd-4b66-a03f-865b51b71a7f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4Mnc3LWZlYjA3NDJjLTI3ZmQtNGI2Ni1hMDNmLTg2NWI1MWI3MWE3Zi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.sm7vQ9A2y8z8EmoKICfhKJ0IRO4oPdI0D0RYCfDLaCQ" loading="lazy" alt="" class="image-5"></div>
       <a href="http://127.0.0.1:8000/dash/">
         <div class="logo">
@@ -23,7 +35,7 @@
         <ul role="list" class="list-2 w-list-unstyled">
           <li class="nav"><a href="http://127.0.0.1:8000/dash/profile">Profile</a></li>
           <li class="nav"><a href="http://127.0.0.1:8000/dash/goal">Goals</a></li>
-          <li class="nav">Chat</li>
+          <li class="nav">Challenges</li>
           <li class="nav">FAQ</li>
           <li class="nav">Settings</li>
           <li class="nav"><a href="http://127.0.0.1:8000/accounts/logout">Log Out</a></li>
@@ -53,7 +65,12 @@
                 {% if hasGoals %}
                   {% for goal in singleGoal %}
                     {% if goal.goal_type == 0 %}
-                      <li class="goals">{{ goal.description }}</li>
+                    {% if goal.complete %}
+                    <li class="goals" style="text-decoration: line-through; color: green;">
+                    {% else %}
+                    <li class="goals">
+                  {% endif %}               
+                        {{ goal.description }}<div class="completeGoal"> <a href="./complete/{{ goal.id }}">✔</a> </div></li>
                     {% endif %}
                   {% endfor %}
 
@@ -63,29 +80,43 @@
               </ul>
           </div>
         </div>
-        <div class="card"><a href="./goal/#nutrition"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782yo-20b21194-b73e-4016-96aa-c8e50b981ccb.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MnlvLTIwYjIxMTk0LWI3M2UtNDAxNi05NmFhLWM4ZTUwYjk4MWNjYi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.cLXvgMIxWfwdpTOPCwhIUNK-QVjG-wsUk8UsI4W5VnM" loading="lazy" alt=""></a>
-          <div class="goalgroup w-row">
-              <ul role="list" class="goallist">
-                {% if hasGoals %}
-                  {% for goal in singleGoal %}
-                    {% if goal.goal_type == 1 %}
-                      <li class="goals">{{ goal.description }}</li>
-                    {% endif %}
-                  {% endfor %}
 
-                {% else %}
-                  <li class="goals">Enter goal here</li>
-                {% endif %}
-              </ul>
-          </div>
-        </div>
+              <div class="card">
+                <a href="./goal/#nutrition"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782yo-20b21194-b73e-4016-96aa-c8e50b981ccb.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MnlvLTIwYjIxMTk0LWI3M2UtNDAxNi05NmFhLWM4ZTUwYjk4MWNjYi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.cLXvgMIxWfwdpTOPCwhIUNK-QVjG-wsUk8UsI4W5VnM" loading="lazy" alt=""></a>
+                <div class="goalgroup w-row">
+                    <ul role="list" class="goallist">
+                      {% if hasGoals %}
+                        {% for goal in singleGoal %}
+                          {% if goal.goal_type == 1 %}
+                            {% if goal.complete %}
+                              <li class="goals" style="text-decoration: line-through; color: green;">
+                              {{ goal.description }}<div class="completeGoal"> <a href="./complete/{{ goal.id }}" style="color: red;">✔</a></li>
+                            {% else %}
+                              <li class="goals">
+                              {{ goal.description }}<div class="completeGoal"> <a href="./complete/{{ goal.id }}">✔</a></li>
+                            {% endif %}  
+                      
+                          {% endif %}
+                        {% endfor %}
+
+                      {% else %}
+                        <li class="goals">Enter goal here</li>
+                      {% endif %}
+                  </ul>
+              </div>
+            </div>
         <div class="card"><a href="./goal/#sleep"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782xt-3f3557da-bb13-4379-bf7c-9570613ba91b.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4Mnh0LTNmMzU1N2RhLWJiMTMtNDM3OS1iZjdjLTk1NzA2MTNiYTkxYi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DKGt9_S5lkveFcKVUSyR-_ScDj5GZ721UKZXz_2IJfw" loading="lazy" alt=""></a>
           <div class="w-row">
               <ul role="list" class="goallist">
                 {% if hasGoals %}
                   {% for goal in singleGoal %}
                     {% if goal.goal_type == 2 %}
-                      <li class="goals">{{ goal.description }}</li>
+                      {% if goal.complete %}
+                      <li class="goals" style="text-decoration: line-through; color: green;">
+                      {% else %}
+                      <li class="goals">
+                    {% endif %}  
+                  {{ goal.description }}<div class="completeGoal"> <a href="./complete/{{ goal.id }}">✔</a></li>
                     {% endif %}
                   {% endfor %}
 
@@ -101,7 +132,12 @@
                 {% if hasGoals %}
                   {% for goal in singleGoal %}
                     {% if goal.goal_type == 3 %}
-                      <li class="goals">{{ goal.description }}</li>
+                      {% if goal.complete %}
+                      <li class="goals" style="text-decoration: line-through; color: green;">
+                      {% else %}
+                      <li class="goals">
+                    {% endif %}   
+                    {{ goal.description }}<div class="completeGoal"> <a href="./complete/{{ goal.id }}">✔</a></li>
                     {% endif %}
                   {% endfor %}
 
