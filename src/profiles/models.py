@@ -78,6 +78,11 @@ class Profile(models.Model):
     avg_sleep = models.IntegerField(default=8, blank=True)
     exercise_level = models.IntegerField(choices=EXERCISE_LEVEL_OPTIONS, default=2, blank=True)
 
+    e_goals_complete = models.BooleanField(default=False)
+    n_goals_complete = models.BooleanField(default=False)
+    s_goals_complete = models.BooleanField(default=False)
+    a_goals_complete = models.BooleanField(default=False)
+    
     def getPass(password):
         return password
     

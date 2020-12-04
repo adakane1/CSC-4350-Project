@@ -21,7 +21,8 @@ from goals.views import (
     goal_create_view, 
     goal_detail_view,
     goal_delete_view,
-    goal_complete_view
+    goal_complete_view_from_dash,
+    goal_complete_view_from_goals,
     )
 
 from django.conf import settings
@@ -40,5 +41,6 @@ urlpatterns = [
     path('dash/goal/new_goal/', goal_create_view, name="new_goal"),
     path('dash/goal/', goal_detail_view, name="goal"),
     path('dash/goal/delete/<int:id>', goal_delete_view, name="delete"),
-    path('dash/complete/<int:id>', goal_complete_view, name="complete")  
+    path('dash/complete/<int:id>', goal_complete_view_from_dash, name="complete_dash"),
+    path('dash/goal/complete/<int:id>', goal_complete_view_from_goals, name="complete_goal")   
 ]
