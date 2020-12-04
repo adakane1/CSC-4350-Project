@@ -2879,8 +2879,19 @@ textarea.w-select {
   .goals:hover > .deleteGoal{
     display: inline;
     color: red; 
-    margin-left: 15px;
+    margin-left: 5px;
   }
+
+  .completeGoal {
+    display: none;
+    z-index: 100; 
+  }
+  .goals:hover > .completeGoal{
+    display: inline;
+    margin-left: 15px;
+    margin-right: 5px;
+  }
+
   .deleteGoal > a:hover {
     color: red;
     transition: 0s;
@@ -2901,95 +2912,279 @@ textarea.w-select {
   }
 </style>
   <div class="w-layout-grid grid">
-    <div id="exercise" class="card">
-      <div class="columns-4 w-row">
-        <div class="w-col w-col-3"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782zi-6b9f477b-982c-4b43-8ca8-c0f48079a538.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MnppLTZiOWY0NzdiLTk4MmMtNGI0My04Y2E4LWMwZjQ4MDc5YTUzOC5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.XmbKUZUdv_XV2iJkhrOJ_V4M1-uKBkJ7ZVOpjQi9oGU" loading="lazy" width="235" alt="" class="pics"></div>
-        <div class="w-col w-col-8">
-          <ul role="list" class="goallist">
-            {% if hasGoals %}
-                {% for goal in singleGoal %}
-                    {% if goal.goal_type == 0 %}
-                        <li class="goals">{{ goal.description }}<div class="deleteGoal"> <a href="./delete/{{ goal.id }}">x</a> </div></li>
-                        
-                    {% endif %}
-                {% endfor %}
+    {% if e_goals_complete %}
+      <style>
+        ul {
+          list-style: none;
+        }
 
-            {% else %}
-                <li class="goals">Enter goal here</li>
-            {% endif %}
-          </ul>
-        </div>
-        <a href="../new_goal" class="w-col w-col-1 addGoalButton">
-          +
-        </a>
-      </div>
-    </div>
-    <div id="nutrition" class="card">
-      <div class="goalgroup w-row">
-        <div class="w-col w-col-3"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782yo-20b21194-b73e-4016-96aa-c8e50b981ccb.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MnlvLTIwYjIxMTk0LWI3M2UtNDAxNi05NmFhLWM4ZTUwYjk4MWNjYi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.cLXvgMIxWfwdpTOPCwhIUNK-QVjG-wsUk8UsI4W5VnM" loading="lazy" width="235" alt="" class="pics"></div>
-        <div class="w-col w-col-8">
-          <ul role="list" class="goallist">
-            {% if hasGoals %}
-                {% for goal in singleGoal %}
-                    {% if goal.goal_type == 1 %}
-                        <li class="goals">{{ goal.description }}<div class="deleteGoal"> <a href="./delete/{{ goal.id }}">x</a> </div></li>
-                    {% endif %}
-                {% endfor %}
+        .completeUL .complete:before {
+          content: '✓';
+        }
+      </style>
+      <div id="exercise" class="card" style="background-color: rgb(129, 189, 9);">
+        <div class="columns-4 w-row">
+          <div class="w-col w-col-3"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de9tbm7-5772396d-a231-45d5-a35e-01a02893c7b9.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTl0Ym03LTU3NzIzOTZkLWEyMzEtNDVkNS1hMzVlLTAxYTAyODkzYzdiOS5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.itGfnKhAtRwOeQRH-bt0plSq7ZobcUJUpCCjFrJZ9po" loading="lazy" width="235" alt="" class="pics"></div>
+          <div class="w-col w-col-8">
+            <ul role="list" class="goallist completeUL">
+              {% if hasGoals %}
+                  {% for goal in singleGoal %}
+                      {% if goal.goal_type == 0 %}
+                        {% if goal.complete %}
+                          <li class="goals complete" style="color: white;">
+                        {% else %}
+                          <li class="goals">
+                        {% endif %}  
+                    {{ goal.description }}<div class="completeGoal" style="text-decoration: none;"> <a href="./complete/{{ goal.id }}" style="text-decoration: none;">✔</a> </div><div class="deleteGoal" style="text-decoration: none;"><a href="./delete/{{ goal.id }}" style="text-decoration: none;">✘</a> </div></li>
+                          
+                      {% endif %}
+                  {% endfor %}
 
-            {% else %}
-                <li class="goals">Enter goal here</li>
-            {% endif %}
-          </ul>
+              {% else %}
+                  <li class="goals">Click the icon to start adding your goals!</li>
+              {% endif %}
+            </ul>
+          </div>
+          <a href="../new_goal" class="w-col w-col-1 addGoalButton"
+          style="background-color: rgb(129, 189, 9);">
+            +
+          </a>
         </div>
-        <a href="../new_goal" class="w-col w-col-1 addGoalButton">
-          +
-        </a>
       </div>
-    </div>
-    <div id="sleep" class="card">
-      <div class="w-row">
-        <div class="w-col w-col-3"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782xt-3f3557da-bb13-4379-bf7c-9570613ba91b.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4Mnh0LTNmMzU1N2RhLWJiMTMtNDM3OS1iZjdjLTk1NzA2MTNiYTkxYi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DKGt9_S5lkveFcKVUSyR-_ScDj5GZ721UKZXz_2IJfw" loading="lazy" width="235" alt="" class="pics"></div>
-        <div class="w-col w-col-8">
-          <ul role="list" class="goallist">
-            {% if hasGoals %}
-                {% for goal in singleGoal %}
-                    {% if goal.goal_type == 2 %}
-                        <li class="goals">{{ goal.description }}<div class="deleteGoal"> <a href="./delete/{{ goal.id }}">x</a> </div></li>
-                    {% endif %}
-                {% endfor %}
+    {% else %}
+      <div id="exercise" class="card">
+        <div class="columns-4 w-row">
+          <div class="w-col w-col-3"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782zi-6b9f477b-982c-4b43-8ca8-c0f48079a538.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MnppLTZiOWY0NzdiLTk4MmMtNGI0My04Y2E4LWMwZjQ4MDc5YTUzOC5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.XmbKUZUdv_XV2iJkhrOJ_V4M1-uKBkJ7ZVOpjQi9oGU" loading="lazy" width="235" alt="" class="pics"></div>
+          <div class="w-col w-col-8">
+            <ul role="list" class="goallist">
+              {% if hasGoals %}
+                  {% for goal in singleGoal %}
+                      {% if goal.goal_type == 0 %}
+                        {% if goal.complete %}
+                          <li class="goals" style="text-decoration: line-through; color: green;">
+                        {% else %}
+                          <li class="goals">
+                        {% endif %}  
+                    {{ goal.description }}<div class="completeGoal" style="text-decoration: none;"> <a href="./complete/{{ goal.id }}" style="text-decoration: none;">✔</a> </div><div class="deleteGoal" style="text-decoration: none;"><a href="./delete/{{ goal.id }}" style="text-decoration: none;">✘</a> </div></li>
+                          
+                      {% endif %}
+                  {% endfor %}
 
-            {% else %}
-                <li class="goals">Enter goal here</li>
-            {% endif %}
-          </ul>
+              {% else %}
+                  <li class="goals">Click the icon to start adding your goals!</li>
+              {% endif %}
+            </ul>
+          </div>
+          <a href="../new_goal" class="w-col w-col-1 addGoalButton">
+            +
+          </a>
         </div>
-        <a href="../new_goal" class="w-col w-col-1 addGoalButton">
-          +
-        </a>
       </div>
-    </div>
-    <div id="appointments" class="card">
-      <div class="w-row">
-        <div class="w-col w-col-3"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de7d4re-c476256f-21df-4c38-9556-f78d4cadd85c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTdkNHJlLWM0NzYyNTZmLTIxZGYtNGMzOC05NTU2LWY3OGQ0Y2FkZDg1Yy5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.wJobA1dtMzArjvDfL608HR6LzK90rfm-MvLYpUPqNqI" loading="lazy" width="235" alt="" class="pics"></div>
-        <div class="w-col w-col-8">
-          <ul role="list" class="goallist">
-            {% if hasGoals %}
-                {% for goal in singleGoal %}
-                    {% if goal.goal_type == 3 %}
-                        <li class="goals">{{ goal.description }}<div class="deleteGoal"> <a href="./delete/{{ goal.id }}">x</a> </div></li>
-                    {% endif %}
-                {% endfor %}
+    {% endif %}
 
-            {% else %}
-                <li class="goals">Enter goal here</li>
-            {% endif %}
-          </ul>
+    {% if n_goals_complete %}
+      <style>
+        ul {
+          list-style: none;
+        }
+
+        .completeUL .complete:before {
+          content: '✓';
+        }
+      </style>
+      <div id="nutrition" class="card" style="background-color: rgb(129, 189, 9);">
+        <div class="goalgroup w-row">
+          <div class="w-col w-col-3"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de9tbnc-c9c34114-7256-4d93-aa3e-6e93c6d607c1.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTl0Ym5jLWM5YzM0MTE0LTcyNTYtNGQ5My1hYTNlLTZlOTNjNmQ2MDdjMS5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.81LDQzLDeT9a6P_Yr9n10YKCrMWl-RNaA3KZ_UuFm08" loading="lazy" width="235" alt="" class="pics"></div>
+          <div class="w-col w-col-8">
+            <ul role="list" class="goallist completeUL">
+              {% if hasGoals %}
+                  {% for goal in singleGoal %}
+                      {% if goal.goal_type == 1 %}
+                        {% if goal.complete %}
+                          <li class="goals complete" style="color: white;">
+                        {% else %}
+                          <li class="goals">
+                        {% endif %}
+                        {{ goal.description }}<div class="completeGoal"> <a href="./complete/{{ goal.id }}">✔</a> </div><div class="deleteGoal"> <a href="./delete/{{ goal.id }}">✘</a> </div></li>
+                      {% endif %}
+                  {% endfor %}
+
+              {% else %}
+                  <li class="goals">Enter goal here</li>
+              {% endif %}
+            </ul>
+          </div>
+          <a href="../new_goal" class="w-col w-col-1 addGoalButton"
+          style="background-color: rgb(129, 189, 9);">
+            +
+          </a>
         </div>
-        <a href="../new_goal" class="w-col w-col-1 addGoalButton">
-          +
-        </a>
       </div>
-    </div>
+    {% else %}
+      <div id="nutrition" class="card">
+        <div class="goalgroup w-row">
+          <div class="w-col w-col-3"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782yo-20b21194-b73e-4016-96aa-c8e50b981ccb.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MnlvLTIwYjIxMTk0LWI3M2UtNDAxNi05NmFhLWM4ZTUwYjk4MWNjYi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.cLXvgMIxWfwdpTOPCwhIUNK-QVjG-wsUk8UsI4W5VnM" loading="lazy" width="235" alt="" class="pics"></div>
+          <div class="w-col w-col-8">
+            <ul role="list" class="goallist">
+              {% if hasGoals %}
+                  {% for goal in singleGoal %}
+                      {% if goal.goal_type == 1 %}
+                        {% if goal.complete %}
+                          <li class="goals" style="text-decoration: line-through; color: green;">
+                        {% else %}
+                          <li class="goals">
+                        {% endif %}
+                        {{ goal.description }}<div class="completeGoal"> <a href="./complete/{{ goal.id }}">✔</a> </div><div class="deleteGoal"> <a href="./delete/{{ goal.id }}">✘</a> </div></li>
+                      {% endif %}
+                  {% endfor %}
+
+              {% else %}
+                  <li class="goals">Enter goal here</li>
+              {% endif %}
+            </ul>
+          </div>
+          <a href="../new_goal" class="w-col w-col-1 addGoalButton">
+            +
+          </a>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if s_goals_complete %}
+      <style>
+        ul {
+          list-style: none;
+        }
+
+        .completeUL .complete:before {
+          content: '✓';
+        }
+      </style>
+      <div id="sleep" class="card" style="background-color: rgb(129, 189, 9);">
+        <div class="w-row">
+          <div class="w-col w-col-3"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782wt-ac5b1daa-f71d-4835-bc11-093f42c78ef3.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4Mnd0LWFjNWIxZGFhLWY3MWQtNDgzNS1iYzExLTA5M2Y0MmM3OGVmMy5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.Iy9yuMOF6pdexKLJeuq7bFjL3U7VFY0Jn-WImjo8k1g" loading="lazy" width="235" alt="" class="pics"></div>
+          <div class="w-col w-col-8">
+            <ul role="list" class="goallist completeUL">
+              {% if hasGoals %}
+                  {% for goal in singleGoal %}
+                      {% if goal.goal_type == 2 %}
+                        {% if goal.complete %}
+                          <li class="goals complete" style="color: white;">
+                        {% else %}
+                          <li class="goals">
+                        {% endif %}
+                        {{ goal.description }}<div class="completeGoal"> <a href="./complete/{{ goal.id }}">✔</a> </div><div class="deleteGoal"> <a href="./delete/{{ goal.id }}">✘</a> </div></li>
+                      {% endif %}
+                  {% endfor %}
+
+              {% else %}
+                  <li class="goals">Enter goal here</li>
+              {% endif %}
+            </ul>
+          </div>
+          <a href="../new_goal" class="w-col w-col-1 addGoalButton"
+          style="background-color: rgb(129, 189, 9);">
+            +
+          </a>
+        </div>
+      </div>
+    {% else %}
+      <div id="sleep" class="card">
+        <div class="w-row">
+          <div class="w-col w-col-3"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782xt-3f3557da-bb13-4379-bf7c-9570613ba91b.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4Mnh0LTNmMzU1N2RhLWJiMTMtNDM3OS1iZjdjLTk1NzA2MTNiYTkxYi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DKGt9_S5lkveFcKVUSyR-_ScDj5GZ721UKZXz_2IJfw" loading="lazy" width="235" alt="" class="pics"></div>
+          <div class="w-col w-col-8">
+            <ul role="list" class="goallist">
+              {% if hasGoals %}
+                  {% for goal in singleGoal %}
+                      {% if goal.goal_type == 2 %}
+                        {% if goal.complete %}
+                          <li class="goals" style="text-decoration: line-through; color: green;">
+                        {% else %}
+                          <li class="goals">
+                        {% endif %}
+                        {{ goal.description }}<div class="completeGoal"> <a href="./complete/{{ goal.id }}">✔</a> </div><div class="deleteGoal"> <a href="./delete/{{ goal.id }}">✘</a> </div></li>
+                      {% endif %}
+                  {% endfor %}
+
+              {% else %}
+                  <li class="goals">Enter goal here</li>
+              {% endif %}
+            </ul>
+          </div>
+          <a href="../new_goal" class="w-col w-col-1 addGoalButton">
+            +
+          </a>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if a_goals_complete %}
+      <style>
+        ul {
+          list-style: none;
+        }
+
+        .completeUL .complete:before {
+          content: '✓';
+        }
+      </style>
+      <div id="appointments" class="card" style="background-color: rgb(129, 189, 9);">
+        <div class="w-row">
+          <div class="w-col w-col-3"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de9tbpr-18cc41be-2a41-428c-b334-37c2ca8d87d8.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTl0YnByLTE4Y2M0MWJlLTJhNDEtNDI4Yy1iMzM0LTM3YzJjYThkODdkOC5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.jMlGoYiJ7_S_x3EG6xYZxf2qhwzBVGk7wtjFlFCexKE" loading="lazy" width="235" alt="" class="pics"></div>
+          <div class="w-col w-col-8">
+            <ul role="list" class="goallist completeUL">
+              {% if hasGoals %}
+                  {% for goal in singleGoal %}
+                      {% if goal.goal_type == 3 %}
+                        {% if goal.complete %}
+                          <li class="goals complete" style="color: white;">
+                        {% else %}
+                          <li class="goals">
+                        {% endif %}
+                        {{ goal.description }}<div class="completeGoal"> <a href="./complete/{{ goal.id }}">✔</a> </div><div class="deleteGoal"> <a href="./delete/{{ goal.id }}">✘</a> </div></li>
+                      {% endif %}
+                  {% endfor %}
+
+              {% else %}
+                  <li class="goals">Enter goal here</li>
+              {% endif %}
+            </ul>
+          </div>
+          <a href="../new_goal" class="w-col w-col-1 addGoalButton"
+          style="background-color: rgb(129, 189, 9);">
+            +
+          </a>
+        </div>
+      </div>
+    {% else %}
+      <div id="appointments" class="card">
+        <div class="w-row">
+          <div class="w-col w-col-3"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de7d4re-c476256f-21df-4c38-9556-f78d4cadd85c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTdkNHJlLWM0NzYyNTZmLTIxZGYtNGMzOC05NTU2LWY3OGQ0Y2FkZDg1Yy5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.wJobA1dtMzArjvDfL608HR6LzK90rfm-MvLYpUPqNqI" loading="lazy" width="235" alt="" class="pics"></div>
+          <div class="w-col w-col-8">
+            <ul role="list" class="goallist">
+              {% if hasGoals %}
+                  {% for goal in singleGoal %}
+                      {% if goal.goal_type == 3 %}
+                        {% if goal.complete %}
+                          <li class="goals" style="text-decoration: line-through; color: green;">
+                        {% else %}
+                          <li class="goals">
+                        {% endif %}
+                        {{ goal.description }}<div class="completeGoal"> <a href="./complete/{{ goal.id }}">✔</a> </div><div class="deleteGoal"> <a href="./delete/{{ goal.id }}">✘</a> </div></li>
+                      {% endif %}
+                  {% endfor %}
+
+              {% else %}
+                  <li class="goals">Enter goal here</li>
+              {% endif %}
+            </ul>
+          </div>
+          <a href="../new_goal" class="w-col w-col-1 addGoalButton">
+            +
+          </a>
+        </div>
+      </div>
+    {% endif %}
   </div>
 {% endblock %}
 

@@ -10,6 +10,18 @@
     {% endblock %}
 
     {% block content %}
+
+    <style>
+      .completeGoal {
+        display: none;
+        z-index: 100; 
+      }
+      .goals:hover > .completeGoal{
+        display: inline;
+        margin-left: 15px;
+      }
+
+    </style>
     <div class="div-block"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782w7-feb0742c-27fd-4b66-a03f-865b51b71a7f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4Mnc3LWZlYjA3NDJjLTI3ZmQtNGI2Ni1hMDNmLTg2NWI1MWI3MWE3Zi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.sm7vQ9A2y8z8EmoKICfhKJ0IRO4oPdI0D0RYCfDLaCQ" loading="lazy" alt="" class="image-5"></div>
       <a href="http://127.0.0.1:8000/dash/">
         <div class="logo">
@@ -23,7 +35,7 @@
         <ul role="list" class="list-2 w-list-unstyled">
           <li class="nav"><a href="http://127.0.0.1:8000/dash/profile">Profile</a></li>
           <li class="nav"><a href="http://127.0.0.1:8000/dash/goal">Goals</a></li>
-          <li class="nav">Chat</li>
+          <li class="nav">Challenges</li>
           <li class="nav">FAQ</li>
           <li class="nav">Settings</li>
           <li class="nav"><a href="http://127.0.0.1:8000/accounts/logout">Log Out</a></li>
@@ -47,45 +59,86 @@
       
       <div class="w-layout-grid grid">
         {% block mainContent %}
-        <div id="w-node-05b6cacc241a-921cf09e" class="card"><a href="./goal"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782zi-6b9f477b-982c-4b43-8ca8-c0f48079a538.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MnppLTZiOWY0NzdiLTk4MmMtNGI0My04Y2E4LWMwZjQ4MDc5YTUzOC5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.XmbKUZUdv_XV2iJkhrOJ_V4M1-uKBkJ7ZVOpjQi9oGU" loading="lazy" alt=""></a>
-          <div class="w-row">
-              <ul role="list" class="goallist">
-                {% if hasGoals %}
-                  {% for goal in singleGoal %}
-                    {% if goal.goal_type == 0 %}
-                      <li class="goals">{{ goal.description }}</li>
-                    {% endif %}
-                  {% endfor %}
 
-                {% else %}
-                  <li class="goals">Enter goal here</li>
-                {% endif %}
-              </ul>
+          {% if e_goals_complete %}
+            <div id="w-node-05b6cacc241a-921cf09e" class="card" style="background-color: rgb(129, 189, 9);"><a href="./goal"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de9tbm7-5772396d-a231-45d5-a35e-01a02893c7b9.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTl0Ym03LTU3NzIzOTZkLWEyMzEtNDVkNS1hMzVlLTAxYTAyODkzYzdiOS5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.itGfnKhAtRwOeQRH-bt0plSq7ZobcUJUpCCjFrJZ9po" loading="lazy" alt=""></a>
+              <h3 style="text-align: center; color: white;">Exercise Goals Complete!</h3>
+            </div>
+            
+            {% else %}
+              <div id="w-node-05b6cacc241a-921cf09e" class="card"><a href="./goal"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782zi-6b9f477b-982c-4b43-8ca8-c0f48079a538.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MnppLTZiOWY0NzdiLTk4MmMtNGI0My04Y2E4LWMwZjQ4MDc5YTUzOC5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.XmbKUZUdv_XV2iJkhrOJ_V4M1-uKBkJ7ZVOpjQi9oGU" loading="lazy" alt=""></a>
+                <div class="w-row">
+                  <ul role="list" class="goallist">
+                      {% if hasGoals %}
+                        {% for goal in singleGoal %}
+                          {% if goal.goal_type == 0 %}
+                            {% if goal.complete %}
+                              <li class="goals" style="text-decoration: line-through; color: green;">
+                            {% else %}
+                              <li class="goals">
+                            {% endif %}               
+                            {{ goal.description }}<div class="completeGoal"> <a href="./complete/{{ goal.id }}">✔</a> </div></li>
+                          {% endif %}
+                        {% endfor %}
+      
+                      {% else %}
+                        <li class="goals">Click the icon above to </li>
+                        <li class="goals">start adding your goals!</li>
+                      {% endif %}
+                    </ul>
+                </div>
+              </div>
+          {% endif %}
+              
+          {% if n_goals_complete %}
+          <div class="card" style="background-color: rgb(129, 189, 9);">
+            <a href="./goal/#nutrition"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de9tbnc-c9c34114-7256-4d93-aa3e-6e93c6d607c1.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTl0Ym5jLWM5YzM0MTE0LTcyNTYtNGQ5My1hYTNlLTZlOTNjNmQ2MDdjMS5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.81LDQzLDeT9a6P_Yr9n10YKCrMWl-RNaA3KZ_UuFm08" loading="lazy" alt=""></a>
+            <h3 style="text-align: center; color: white;">Nutrition Goals Complete!</h3>
           </div>
-        </div>
-        <div class="card"><a href="./goal/#nutrition"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782yo-20b21194-b73e-4016-96aa-c8e50b981ccb.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MnlvLTIwYjIxMTk0LWI3M2UtNDAxNi05NmFhLWM4ZTUwYjk4MWNjYi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.cLXvgMIxWfwdpTOPCwhIUNK-QVjG-wsUk8UsI4W5VnM" loading="lazy" alt=""></a>
-          <div class="goalgroup w-row">
-              <ul role="list" class="goallist">
-                {% if hasGoals %}
-                  {% for goal in singleGoal %}
-                    {% if goal.goal_type == 1 %}
-                      <li class="goals">{{ goal.description }}</li>
-                    {% endif %}
-                  {% endfor %}
+            {% else %}
+              <div class="card">
+                <a href="./goal/#nutrition"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782yo-20b21194-b73e-4016-96aa-c8e50b981ccb.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4MnlvLTIwYjIxMTk0LWI3M2UtNDAxNi05NmFhLWM4ZTUwYjk4MWNjYi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.cLXvgMIxWfwdpTOPCwhIUNK-QVjG-wsUk8UsI4W5VnM" loading="lazy" alt=""></a>
+                <div class="goalgroup w-row">
+                    <ul role="list" class="goallist">
+                      {% if hasGoals %}
+                        {% for goal in singleGoal %}
+                          {% if goal.goal_type == 1 %}
+                            {% if goal.complete %}
+                              <li class="goals" style="text-decoration: line-through; color: green;">
+                              {{ goal.description }}<div class="completeGoal"> <a href="./complete/{{ goal.id }}" style="color: red;">✔</a></li>
+                            {% else %}
+                              <li class="goals">
+                              {{ goal.description }}<div class="completeGoal"> <a href="./complete/{{ goal.id }}">✔</a></li>
+                            {% endif %}  
+                      
+                          {% endif %}
+                        {% endfor %}
 
-                {% else %}
-                  <li class="goals">Enter goal here</li>
-                {% endif %}
-              </ul>
-          </div>
-        </div>
+                      {% else %}
+                        <li class="goals">Enter goal here</li>
+                      {% endif %}
+                  </ul>
+              </div>
+            </div>
+          {% endif %}
+
+      {% if s_goals_complete %}
+      <div class="card" style="background-color: rgb(129, 189, 9);"><a href="./goal/#sleep"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782wt-ac5b1daa-f71d-4835-bc11-093f42c78ef3.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4Mnd0LWFjNWIxZGFhLWY3MWQtNDgzNS1iYzExLTA5M2Y0MmM3OGVmMy5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.Iy9yuMOF6pdexKLJeuq7bFjL3U7VFY0Jn-WImjo8k1g" loading="lazy" alt=""></a>
+        <h3 style="text-align: center; color: white;">Sleep Goals Complete!</h3>
+      </div>
+      {% else %}
         <div class="card"><a href="./goal/#sleep"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de782xt-3f3557da-bb13-4379-bf7c-9570613ba91b.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTc4Mnh0LTNmMzU1N2RhLWJiMTMtNDM3OS1iZjdjLTk1NzA2MTNiYTkxYi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DKGt9_S5lkveFcKVUSyR-_ScDj5GZ721UKZXz_2IJfw" loading="lazy" alt=""></a>
           <div class="w-row">
               <ul role="list" class="goallist">
                 {% if hasGoals %}
                   {% for goal in singleGoal %}
                     {% if goal.goal_type == 2 %}
-                      <li class="goals">{{ goal.description }}</li>
+                      {% if goal.complete %}
+                      <li class="goals" style="text-decoration: line-through; color: green;">
+                      {% else %}
+                      <li class="goals">
+                    {% endif %}  
+                  {{ goal.description }}<div class="completeGoal"> <a href="./complete/{{ goal.id }}">✔</a></li>
                     {% endif %}
                   {% endfor %}
 
@@ -95,13 +148,24 @@
               </ul>
           </div>
         </div>
+      {% endif %}
+      {% if a_goals_complete %}
+      <div class="card" style="background-color: rgb(129, 189, 9);"><a href="./goal/#appointments"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de9tbpr-18cc41be-2a41-428c-b334-37c2ca8d87d8.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTl0YnByLTE4Y2M0MWJlLTJhNDEtNDI4Yy1iMzM0LTM3YzJjYThkODdkOC5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.jMlGoYiJ7_S_x3EG6xYZxf2qhwzBVGk7wtjFlFCexKE" loading="lazy" alt=""></a>
+        <h3 style="text-align: center; color: white;">Appointments Met!</h3>
+      </div>
+      {% else %}
         <div class="card"><a href="./goal/#appointments"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de7d4re-c476256f-21df-4c38-9556-f78d4cadd85c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMjcxZGVlYTgtZTI4Yy00MWEzLWFhZjUtMjkxM2Y1ZjQ4YmU2XC9kZTdkNHJlLWM0NzYyNTZmLTIxZGYtNGMzOC05NTU2LWY3OGQ0Y2FkZDg1Yy5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.wJobA1dtMzArjvDfL608HR6LzK90rfm-MvLYpUPqNqI" loading="lazy" alt=""></a>
           <div class="w-row">
               <ul role="list" class="goallist">
                 {% if hasGoals %}
                   {% for goal in singleGoal %}
                     {% if goal.goal_type == 3 %}
-                      <li class="goals">{{ goal.description }}</li>
+                      {% if goal.complete %}
+                      <li class="goals" style="text-decoration: line-through; color: green;">
+                      {% else %}
+                      <li class="goals">
+                    {% endif %}   
+                    {{ goal.description }}<div class="completeGoal"> <a href="./complete/{{ goal.id }}">✔</a></li>
                     {% endif %}
                   {% endfor %}
 
@@ -111,6 +175,7 @@
               </ul>
           </div>
         </div>
+      {% endif %}
       {% endblock %}
       </div>
     {% endblock %}
